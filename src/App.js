@@ -175,6 +175,7 @@ function App() {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [musicEnabled, setMusicEnabled] = useState(true);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
+  const [bingoMessage, setBingoMessage] = useState("");
 
   const clickSoundRef = useRef(null);
   const bingoSoundRef = useRef(null);
@@ -186,9 +187,9 @@ function App() {
   useEffect(() => {
     initializeGame();
 
-    clickSoundRef.current = new Audio("/sounds/click.mp3");
-    bingoSoundRef.current = new Audio("/sounds/bingo.mp3");
-    bgMusicRef.current = new Audio("/sounds/background.mp3");
+    clickSoundRef.current = new Audio(process.env.PUBLIC_URL + "/sounds/click.mp3");
+    bingoSoundRef.current = new Audio(process.env.PUBLIC_URL + "/sounds/bingo.mp3");
+    bgMusicRef.current = new Audio(process.env.PUBLIC_URL + "/sounds/background.mp3");
 
     bgMusicRef.current.loop = true;
 
@@ -297,23 +298,34 @@ function App() {
 
   const checkForBingo = () => {
     const size = 5;
-    let bingo = false;
-
+    let count = 0;
+  
     for (let i = 0; i < size; i++) {
-      if (selected[i].every((c) => c)) bingo = true;
-      if (selected.every((row) => row[i])) bingo = true;
+      if (selected[i].every(c => c)) count++;
+      if (selected.every(row => row[i])) count++;
     }
-
-    if (selected.every((row, i) => row[i])) bingo = true;
-    if (selected.every((row, i) => row[size - 1 - i])) bingo = true;
-
-    if (bingo && !showBingo) {
+  
+    if (selected.every((row, i) => row[i])) count++;
+    if (selected.every((row, i) => row[size - 1 - i])) count++;
+  
+    if (count > 0) {
+      const result = getBingoRank(count);
       setShowBingo(true);
-      if (soundEnabled) {
-        bingoSoundRef.current?.play().catch(() => {});
+      setBingoMessage(`${t.bingo} (${result})`);
+  
+      if (soundEnabled && bingoSoundRef.current) {
+        bingoSoundRef.current.play().catch(() => {});
       }
+  
       setTimeout(() => setShowBingo(false), 3000);
     }
+  };
+
+  const getBingoRank = (count) => {
+    if (count >= 3) return "🧨 상남자";
+    if (count === 2) return "🧂 하남자";
+    if (count === 1) return "🥬 기지배";
+    return "";
   };
 
   return (
@@ -359,9 +371,27 @@ function App() {
           <button
             className="github-button"
             title="View on GitHub"
-            onClick={() => window.open("https://github.com/your-username/your-repo", "_blank")}
+            onClick={() => window.open("https://github.com/DongJu-Na/real-man-bingo", "_blank")}
           >
             <Github size={20} style={{ marginRight: "6px" }} />
+          </button>
+
+          <button
+            className="share-button"
+            title="공유하기"
+            onClick={() => {
+              if (navigator.share) {
+                navigator.share({
+                  title: "상남자 빙고",
+                  text: "나는 과연 상남자일까?",
+                  url: window.location.href
+                }).catch((e) => console.log("Share failed:", e));
+              } else {
+                alert("공유 기능을 지원하지 않는 브라우저입니다.");
+              }
+            }}
+          >
+            🔗 Share
           </button>
         </div>
 
@@ -379,7 +409,7 @@ function App() {
           )}
         </div>
 
-        {showBingo && <div className="bingo-alert">{t.bingo}</div>}
+        {showBingo && <div className="bingo-alert">{bingoMessage}</div>}
       </header>
     </div>
   );

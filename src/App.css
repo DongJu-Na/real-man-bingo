@@ -135,6 +135,20 @@
   margin-bottom: 10%;
 }
 
+.share-button {
+  background: #555;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.share-button:hover {
+  background: #777;
+}
+
 @keyframes glow {
   0% { background-color: #ff3300; box-shadow: 0 0 8px #ff3300; }
   100% { background-color: #ffaa00; box-shadow: 0 0 10px #ffaa00; }
