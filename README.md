@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# 💪 상남자 빙고 (Real Man Bingo)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> 나는 과연 **상남자**일까?  
+> 상남자 밈 기반 속성들을 랜덤 빙고로 즐기며 당신의 숨겨진 상남자력을 테스트해보세요.
 
-## Available Scripts
+![image](https://github.com/user-attachments/assets/f2feeb85-8af0-48e5-acb6-f6b04727e03a)
 
-In the project directory, you can run:
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🧩 주요 기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- ✅ 25칸 랜덤 빙고판 자동 생성
+- 🔄 새로고침 버튼으로 빙고 리셋
+- 🌍 다국어 지원 (한국어, 영어, 일본어)
+- 🔊 효과음 및 배경음악
+- 🎆 상남자 애니메이션 (담배 / 쉐이커 + 초코 프로틴 분출 효과)
+- 📊 빙고 달성 수에 따라 결과 출력  
+  - 1빙고: **기지배**
+  - 2빙고: **하남자**
+  - 3빙고 이상: **상남자**
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔗 데모
 
-### `npm run build`
+👉 [https://dongju-na.github.io/real-man-bingo](https://dongju-na.github.io/real-man-bingo)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🛠️ 기술 스택
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React 19
+- CSS 애니메이션
+- HTML5 Canvas (입자 효과)
+- `lucide-react` 아이콘 사용
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📦 로컬 설치 및 실행 방법
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+# 의존성 설치
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# 개발 서버 실행
+npm start
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# 프로덕션 빌드
+npm run build
 
-## Learn More
+## 🤝 컨트리뷰션 가이드
+환영합니다! 누구든 자유롭게 기여할 수 있어요. 아래 기준을 참고해주세요.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+이슈 또는 PR을 생성해주세요.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+커밋 메시지는 명확하게 작성해주세요.
 
-### Code Splitting
+다국어 번역 시, languages 객체를 기준으로 동일한 구조 유지해주세요.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+UI/UX 관련 변경 시 스크린샷을 첨부해주세요.
 
-### Analyzing the Bundle Size
+밈 추가 시 bingoSets 배열의 각 언어에 모두 반영해주세요.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📄 라이선스
+MIT License
