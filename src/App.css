@@ -1,38 +1,271 @@
+/* Layout */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.protein-canvas {
+  position: absolute;
+  top: 2%;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.App-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  gap: 1%;
+  margin-bottom: 2%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5%;
+  width: 70vmin;
+  height: 70vmin;
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1;
+}
+
+.cell {
+  background-color: #333;
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.cell.selected {
+  background-color: #3a86ff;
+  transform: scale(0.95);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.bingo-alert {
+  background-color: #ff006e;
+  color: white;
+  padding: 2% 4%;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: pulse 1s infinite;
+  margin-top: 2%;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Smoke */
+.smoke-background {
+  position: absolute;
+  top: 15%;
+  left: 5%;
+  width: 6%;
+  height: 50%;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cigarette {
+  width: 30%;
+  height: 80%;
+  background: linear-gradient(to bottom, #b92e2e 0%, #fff 30%, #fff 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 3px #000;
+  position: relative;
+}
+
+.burning-tip {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 8%;
+  background-color: red;
+  border-radius: 0 0 4px 4px;
+  animation: glow 1s infinite alternate;
+}
+
+.smoke {
+  width: 100%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(179, 175, 175, 0.7) 60%, transparent 100%);
+  border-radius: 50%;
+  animation: smoke-rise 4s infinite ease-in-out;
+  opacity: 0.8;
+  margin-bottom: 10%;
+}
+
+@keyframes glow {
+  0% { background-color: #ff3300; box-shadow: 0 0 8px #ff3300; }
+  100% { background-color: #ffaa00; box-shadow: 0 0 10px #ffaa00; }
+}
+
+@keyframes smoke-rise {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  50% { transform: translateY(-50%) scale(1.2); opacity: 0.5; }
+  100% { transform: translateY(-100%) scale(1.4); opacity: 0; }
+}
+
+/* Shaker */
+.shaker-container {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 6%;
+  height: 50%;
+  z-index: 1;
+  pointer-events: none;
+  animation: shake-explode 0.4s infinite;
+  transform-origin: center bottom;
+}
+
+.shaker-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #3a86ff 0%, #265ddf 100%);
+  border-radius: 10% 10% 15% 15%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.7rem;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+}
+
+.shaker-body::after {
+  content: "";
+  position: absolute;
+  top: -40%; /* moved higher for accurate source point */
+  left: 25%;
+  width: 50%;
+  height: 40%;
+  background: radial-gradient(circle, #5a3e2b 30%, rgba(90,62,43,0.8) 70%, transparent 100%);
+  border-radius: 50%;
+  animation: lava-erupt 0.6s infinite ease-in-out;
+  opacity: 1;
+}
+
+/* Lava-like droplets */
+.shaker-body::before {
+  content: "";
+  position: absolute;
+  top: -30%; /* moved higher for accurate source point */
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, #5a3e2b 50%, transparent 70%);
+  border-radius: 50%;
+  animation: protein-burst 0.8s infinite ease-in-out;
+  opacity: 0.3;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 120px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 4px;
+  right: 0;
+}
+
+.dropdownContentShow {
+  display: block;
+}
+
+.dropdownItem {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.dropdownItem:hover {
+  background-color: #444;
+}
+
+@keyframes protein-burst {
+  0% { transform: scale(0.8) translateY(0); opacity: 0.3; }
+  50% { transform: scale(1.2) translateY(-20%); opacity: 0.6; }
+  100% { transform: scale(1.4) translateY(-60%); opacity: 0; }
+}
+
+@keyframes shake-explode {
+  0% { transform: rotate(0deg); }
+  20% { transform: rotate(6deg); }
+  40% { transform: rotate(-6deg); }
+  60% { transform: rotate(5deg); }
+  80% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes lava-erupt {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  50% { transform: translateY(-40%) scale(1.3); opacity: 0.6; }
+  100% { transform: translateY(-100%) scale(1.5); opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  .board {
+    gap: 1%;
+    width: 90vw;
+    height: 90vw;
   }
-  to {
-    transform: rotate(360deg);
+
+  .cell {
+    font-size: 0.9rem;
   }
 }
