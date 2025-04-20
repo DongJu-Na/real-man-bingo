@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/real-man-bingo/static/css/main.f1d4335c.css",
-    "main.js": "/real-man-bingo/static/js/main.35d605f9.js",
+    "main.js": "/real-man-bingo/static/js/main.a519cfe4.js",
     "static/js/453.557d90d4.chunk.js": "/real-man-bingo/static/js/453.557d90d4.chunk.js",
     "index.html": "/real-man-bingo/index.html",
     "main.f1d4335c.css.map": "/real-man-bingo/static/css/main.f1d4335c.css.map",
-    "main.35d605f9.js.map": "/real-man-bingo/static/js/main.35d605f9.js.map",
+    "main.a519cfe4.js.map": "/real-man-bingo/static/js/main.a519cfe4.js.map",
     "453.557d90d4.chunk.js.map": "/real-man-bingo/static/js/453.557d90d4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1d4335c.css",
-    "static/js/main.35d605f9.js"
+    "static/js/main.a519cfe4.js"
   ]
 }
