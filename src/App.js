@@ -173,7 +173,7 @@ function App() {
   const [showBingo, setShowBingo] = useState(false);
   const [lang, setLang] = useState("ko");
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [musicEnabled, setMusicEnabled] = useState(true);
+  const [musicEnabled, setMusicEnabled] = useState(false);
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const [bingoMessage, setBingoMessage] = useState("");
 
@@ -194,7 +194,7 @@ function App() {
     bgMusicRef.current.loop = true;
 
     return () => {
-      // bgMusicRef.current.pause();
+      bgMusicRef.current.pause();
     };
   }, []);
 
