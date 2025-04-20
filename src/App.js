@@ -322,7 +322,9 @@ function App() {
   };
 
   const getBingoRank = (count) => {
-    if (count >= 3) return "🧨 상남자";
+    if (count === 5) return "🔥 GOD";
+    if (count === 4) return "🏋️‍♀️ 알파메일";
+    if (count === 3) return "🧨 상남자";
     if (count === 2) return "🧂 하남자";
     if (count === 1) return "🥬 기지배";
     return "";
