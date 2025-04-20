@@ -194,7 +194,7 @@ function App() {
     bgMusicRef.current.loop = true;
 
     return () => {
-      bgMusicRef.current.pause();
+      // bgMusicRef.current.pause();
     };
   }, []);
 
