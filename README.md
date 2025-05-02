@@ -1,5 +1,5 @@
 # 💪 상남자 빙고 (Real Man Bingo)
-
+<p dir="auto"><a href="https://opensource.org/licenses/MIT" rel="nofollow"><img src="https://camo.githubusercontent.com/6cd0120cc4c5ac11d28b2c60f76033b52db98dac641de3b2644bb054b449d60c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT" data-canonical-src="https://img.shields.io/badge/License-MIT-yellow.svg" style="max-width: 100%;"></a> <a href="https://www.buymeacoffee.com/dongju" rel="nofollow"><img src="https://camo.githubusercontent.com/0b448aabee402aaf7b3b256ae471e7dc66bcf174fad7d6bb52b27138b2364e47/68747470733a2f2f7777772e6275796d6561636f666665652e636f6d2f6173736574732f696d672f637573746f6d5f696d616765732f6f72616e67655f696d672e706e67" height="20px" data-canonical-src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" style="max-width: 100%;"></a></p>
 > 나는 과연 **상남자**일까?  
 > 상남자 밈 기반 속성들을 랜덤 빙고로 즐기며 당신의 숨겨진 상남자력을 테스트해보세요.
 
